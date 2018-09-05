@@ -1,0 +1,37 @@
+
+.login-form {
+  border: solid 1px #555;
+}
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  background-image: url("../assets/user-icon.png");
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  border: solid 1px #555;
+}
+
+input {
+  width: 300px;
+  height: 50px;
+  border: solid 1px #555;
+}
+
+.login-submit {
+  width: 150px;
+  height: 60px;
+  border: solid 1px #555;
+}
+
+textarea, select, input, button {
+  outline: none;
+}

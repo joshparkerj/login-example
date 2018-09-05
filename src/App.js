@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './views/Home.js';
 import Login from './views/Login.js';
 
 class App extends Component {
+  state = {
+    loggedIn: false
+  }
+
   render() {
     return (
-      <div className="App">
-        <p>
-          Working!
-        </p>
-        <Home />
-        <Login />
-      </div>
+      <Router>
+        <Switch>
+          <Route path='/login' component={Login}/>
+          <Route path='/home' component={Home}/>
+        </Switch>
+      </Router>
     );
   }
 }
