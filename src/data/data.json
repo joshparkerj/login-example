@@ -1,0 +1,15 @@
+[
+  {"firstName": "Jon","email": "jon@jon.com","password":"1234","id":"1"},
+  {"firstName": "Dawn","email": "d@awn.com","password":"5678","id":"2"},
+  {"firstName": "Mary","email": "m@ary.com","password":"9101112","id":"3"},
+  {"firstName": "Tony","email": "playboy@stark.com","password":"potts","id":"4"},
+  {"firstName": "Bruce","email": "banner@nukes.com","password":"sho","id":"5"},
+  {"firstName": "Clark","email": "m@ary.com","password":"9101112","id":"6"},
+  {"firstName": "Hal","email": "m@ary.com","password":"9101112","id":"7"},
+  {"firstName": "J'onn","email": "m@ary.com","password":"9101112","id":"8"},
+  {"firstName": "Peter","email": "m@ary.com","password":"9101112","id":"9"},
+  {"firstName": "Riri","email": "m@ary.com","password":"9101112","id":"10"},
+  {"firstName": "Doreen","email": "m@ary.com","password":"9101112","id":"11"},
+  {"firstName": "May","email": "m@ary.com","password":"9101112","id":"12"},
+  {"firstName": "Liz","email": "m@ary.com","password":"9101112","id":"13"}
+]

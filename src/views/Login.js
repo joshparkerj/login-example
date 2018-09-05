@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
+import { authenticateUser } from '../data/data-service.js';
 
 class Login extends Component {
   state = {
@@ -14,8 +15,9 @@ class Login extends Component {
   }
 
   handleClick = () => {
-    // fake authentication here.
-    this.props.history.push('/home');
+    const id = authenticateUser(this.state.email,this.state.password);
+    if (id) return this.props.history.push(`/home/${id}`);
+    console.log('failed to log in');
 
   }
 
