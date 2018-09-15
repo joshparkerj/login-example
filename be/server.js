@@ -34,6 +34,17 @@ app.get('/user/:id', (req,res) => {
   }
 })
 
+app.get('/submit-user', (req,res) => {
+  console.log('adding');
+  console.log(req.query);
+  users.addUser({
+    name: req.query.name,
+    email: req.query.email,
+    password: req.query.password
+  })
+  res.send('added');
+})
+
 app.listen(8080, function(){ // function expression used here
   console.log(`http://localhost:${this.address().port}`);
   // so that this gets the context

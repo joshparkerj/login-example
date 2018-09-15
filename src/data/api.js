@@ -20,3 +20,16 @@ export function findById(id) {
     })
     .catch(console.error);
 }
+
+export function submitUser(user) {
+  const q = `?name=${user.name}&email=${user.email}&password=${user.password}`;
+  console.log('submitting');
+  console.log(q);
+  return axios.get(`http://localhost:8080/submit-user${q}`)
+  .then(res => {
+    return res;
+  })
+  .catch (err => {
+    console.error(err);
+  })
+}
