@@ -35,8 +35,6 @@ app.get('/user/:id', (req,res) => {
 })
 
 app.get('/submit-user', (req,res) => {
-  console.log('adding');
-  console.log(req.query);
   users.addUser({
     name: req.query.name,
     email: req.query.email,

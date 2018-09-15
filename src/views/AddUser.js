@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './adduser.css';
 import { submitUser } from '../data/api.js';
+import { ToastContainer, toast } from 'react-toastify';
 
 class AddUser extends Component {
   constructor(){
@@ -17,20 +18,22 @@ class AddUser extends Component {
   }
 
   handleClick = () => {
-    console.log('submitting');
-    console.log(this.state);
     submitUser(this.state);
+    toast.success("Thank you!", {
+      position: toast.POSITION.TOP_CENTER
+    });
   }
 
   render(){
     return (
       <div className="add-user">
+        <ToastContainer />
         <label>First Name:</label>
-        <input name="name" onChange={this.handleChange}/>
+        <input name="name" onChange={this.handleChange}/><br/>
         <label>Email:</label>
-        <input name="email" onChange={this.handleChange}/>
+        <input name="email" onChange={this.handleChange}/><br/>
         <label>Password:</label>
-        <input name="password" onChange={this.handleChange}/>
+        <input name="password" onChange={this.handleChange}/><br/>
         <button onClick={this.handleClick}>submit</button>
       </div>
     )

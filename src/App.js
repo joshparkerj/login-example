@@ -12,13 +12,20 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route path='/login' component={Login}/>
-          <Route path='/home/:id' component={Home}/>
-          <Route path='/adduser' component={AddUser}/>
-        </Switch>
-      </Router>
+      <div className="app">
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/adduser">Add User</a></li>
+        </ul>
+        <Router>
+          <Switch>
+            <Route path='/login' component={Login}/>
+            <Route path='/home/:id' component={Home}/>
+            <Route path='/adduser' component={AddUser}/>
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
