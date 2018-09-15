@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import './login.css';
 import { authenticateUser } from '../data/data-service.js';
+import axios from 'axios';
 
 class Login extends Component {
   state = {
     email: '',
     password: ''
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:8080/health`)
+      .then( res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      })
   }
 
   handleChange = (event) => {
