@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './login.css';
-//import { authenticateUser } from '../data/data-service.js';
-import axios from 'axios';
 import {authenticateUser} from '../data/api.js';
 
 class Login extends Component {
@@ -9,16 +7,6 @@ class Login extends Component {
     email: '',
     password: '',
     authenticated: false
-  }
-
-  componentDidMount() {
-    axios.get(`http://localhost:8080/health`)
-      .then( res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      })
   }
 
   handleChange = (event) => {

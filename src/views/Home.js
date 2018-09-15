@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { findUserByID } from '../data/data-service.js';
 import './home.css';
 import { findById } from '../data/api.js';
 
@@ -31,7 +30,6 @@ class Home extends Component {
     const id = this.props.match.params.id;
     findById(id)
       .then(res => {
-        console.log(res);
         this.setState({user: res});
       })
       .catch(console.error);

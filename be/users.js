@@ -8,7 +8,9 @@ function authenticateUser(email, password) {
 }
 
 function findById(id) {
-  return memoryStore.find(user => Number(user.id) === Number(id));
+  const user = memoryStore.find(user => Number(user.id) === Number(id));
+  if (!user) return null;
+  return user;
 }
 
 const users = {};

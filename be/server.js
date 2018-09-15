@@ -18,9 +18,6 @@ app.get('/health', (req,res) => {
 
 app.get('/authenticate-user', (req,res) => {
   const id = users.authenticateUser(req.query.email,req.query.password);
-  console.log('authenticating');
-  console.log(req.query.email);
-  console.log(req.query.password);
   if (id) {
     res.send({id: id});
   }else{
@@ -30,19 +27,14 @@ app.get('/authenticate-user', (req,res) => {
 
 app.get('/user/:id', (req,res) => {
   const user = users.findById(req.params.id);
-  console.log('finding');
-  console.log(req.params.id);
   if (user){
-    console.log('sending user');
-    console.log(user);
     res.send(user);
   }else{
-    res.status(404).send();
+    res.status(404).send(`user ${req.params.id} not found`);
   }
 })
 
 app.listen(8080, function(){ // function expression used here
   console.log(`http://localhost:${this.address().port}`);
   // so that this gets the context
-  console.log(users);
 })
