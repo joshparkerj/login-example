@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './login.css';
-import { authenticateUser } from '../data/data-service.js';
+//import { authenticateUser } from '../data/data-service.js';
 import axios from 'axios';
+import {authenticateUser} from '../data/api.js';
 
 class Login extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    authenticated: false
   }
 
   componentDidMount() {
@@ -26,10 +28,13 @@ class Login extends Component {
   }
 
   handleClick = () => {
-    const id = authenticateUser(this.state.email,this.state.password);
-    if (id) return this.props.history.push(`/home/${id}`);
-    console.log('failed to log in');
-
+    authenticateUser(this.state.email,this.state.password)
+      .then( userId => {
+        return this.props.history.push(`/home/${userId}`);
+      })
+      .catch(err => {
+        alert(`not authenticated: ${err}`);
+      })
   }
 
   render() {

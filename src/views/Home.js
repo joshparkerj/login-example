@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { findUserByID } from '../data/data-service.js';
+//import { findUserByID } from '../data/data-service.js';
 import './home.css';
+import { findById } from '../data/api.js';
 
 class User extends Component {
 
@@ -27,10 +28,13 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props.match.params.id);
     const id = this.props.match.params.id;
-    const user = findUserByID(id);
-    this.setState({ user });
+    findById(id)
+      .then(res => {
+        console.log(res);
+        this.setState({user: res});
+      })
+      .catch(console.error);
   }
 
   handleChange = (event) => {
@@ -38,7 +42,11 @@ class Home extends Component {
   }
 
   handleClick = () => {
-    this.setState({showUser: findUserByID(this.state.id)});
+    findById(this.state.id)
+      .then(res => {
+        this.setState({showUser: res});
+      })
+      .catch(console.error);
   }
 
   render() {
