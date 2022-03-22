@@ -19,6 +19,7 @@
     "lint": "npx eslint \"be/*.js\" \"src/**/*.jsx\" \"src/data/*.js\""
   },
   "devDependencies": {
+    "@swc/core": "^1.2.160",
     "@swc/jest": "^0.2.20",
     "css-loader": "^6.7.1",
     "eslint": "^8.11.0",
