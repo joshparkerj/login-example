@@ -8,6 +8,7 @@ import AddUser from './views/AddUser';
 const App = function App() {
   return (
     <div className="app">
+      <h1>LOGIN EXAMPLE</h1>
       <ul>
         <li><a href="/login">Login</a></li>
         <li><a href="/home">Home</a></li>

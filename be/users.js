@@ -1,4 +1,7 @@
 const fs = require('fs');
+
+const usersDebug = require('debug')('users');
+
 const memoryStore = require('./data.json');
 
 function authenticateUser(email, password) {
@@ -26,9 +29,9 @@ function addUser(user) {
   const success = 'The file was saved!';
   fs.writeFile('./data.json', JSON.stringify(memoryStore), (err) => {
     if (err) {
-      console.error(err);
+      usersDebug.extend('ERROR')(err);
     } else {
-      console.log(success);
+      usersDebug(success);
     }
   });
 }

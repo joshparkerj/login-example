@@ -5,9 +5,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 
+const serverDebug = require('debug')('server');
+
 const app = express();
 
-app.use(rateLimit({ windowMs: 10000, max: 100 }))
+app.use(rateLimit({ windowMs: 10000, max: 100 }));
 
 const cors = require('cors');
 const users = require('./users');
@@ -17,7 +19,7 @@ app.use(cors({ origin: ['http://localhost:3000'] }));
 
 app.get('/health', (_, res) => {
   res.send('ok');
-  console.log('health check ok');
+  serverDebug('health check ok');
 });
 
 app.post('/authenticate-user', (req, res) => {
@@ -47,7 +49,7 @@ app.post('/submit-user', (req, res) => {
   res.send('added');
 });
 
-app.listen(8080, function () { // function expression used here
-  console.log(`http://localhost:${this.address().port}`);
+app.listen(8080, function listen() { // function expression used here
+  serverDebug(`http://localhost:${this.address().port}`);
   // so that this gets the context
 });

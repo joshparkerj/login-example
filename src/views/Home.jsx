@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import debug from 'debug';
+
 import './home.css';
 import User from './User';
 import { findById } from '../data/api';
+
+const debugHome = debug('home');
 
 const Home = function Home({ match }) {
   const [id, setId] = useState('');
@@ -15,7 +19,7 @@ const Home = function Home({ match }) {
       .then((res) => {
         setUser(res);
       })
-      .catch(console.error);
+      .catch(debugHome);
   }, []);
 
   const handleChange = ({ target }) => {
@@ -27,7 +31,7 @@ const Home = function Home({ match }) {
       .then((res) => {
         setShowUser(res);
       })
-      .catch(console.error);
+      .catch(debugHome);
   };
 
   if (!user || !user.id) {

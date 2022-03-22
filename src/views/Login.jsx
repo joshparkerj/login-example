@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 import './login.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { authenticateUser } from '../data/api';
 
 const Login = function Login({ history }) {
@@ -12,12 +15,13 @@ const Login = function Login({ history }) {
     authenticateUser(email, password)
       .then((userId) => history.push(`/home/${userId}`))
       .catch((err) => {
-        alert(`not authenticated: ${err}`);
+        toast.error(`not authenticated: ${err}`);
       });
   };
 
   return (
     <div className="login">
+      <ToastContainer />
       <div className="logo-container" />
       <input
         name="email"
