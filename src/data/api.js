@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export function authenticateUser(email, password) {
-  const queryString = `?email=${email}&password=${password}`;
-  return axios.get(`http://localhost:8080/authenticate-user${queryString}`)
+  return axios.post('http://localhost:8080/authenticate-user', { email, password })
     .then((res) => {
       const userId = res.data.id;
       return userId;
@@ -21,9 +20,8 @@ export function findById(id) {
     .catch(console.error);
 }
 
-export function submitUser(user) {
-  const q = `?name=${user.name}&email=${user.email}&password=${user.password}`;
-  return axios.get(`http://localhost:8080/submit-user${q}`)
+export function submitUser({ name, email, password }) {
+  return axios.post('http://localhost:8080/submit-user', { name, email, password })
     .then((res) => res)
     .catch((err) => {
       console.error(err);

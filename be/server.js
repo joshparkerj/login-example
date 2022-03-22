@@ -3,21 +3,25 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
+
+app.use(rateLimit({ windowMs: 10000, max: 100 }))
+
 const cors = require('cors');
 const users = require('./users');
 
 app.use(bodyParser.json());
 app.use(cors({ origin: ['http://localhost:3000'] }));
 
-app.get('/health', (req, res) => {
+app.get('/health', (_, res) => {
   res.send('ok');
   console.log('health check ok');
 });
 
-app.get('/authenticate-user', (req, res) => {
-  const id = users.authenticateUser(req.query.email, req.query.password);
+app.post('/authenticate-user', (req, res) => {
+  const id = users.authenticateUser(req.body.email, req.body.password);
   if (id) {
     res.send({ id });
   } else {
@@ -34,11 +38,11 @@ app.get('/user/:id', (req, res) => {
   }
 });
 
-app.get('/submit-user', (req, res) => {
+app.post('/submit-user', (req, res) => {
   users.addUser({
-    name: req.query.name,
-    email: req.query.email,
-    password: req.query.password,
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
   });
   res.send('added');
 });
