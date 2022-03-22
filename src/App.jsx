@@ -7,8 +7,8 @@ import AddUser from './views/AddUser.js';
 
 class App extends Component {
   state = {
-    loggedIn: false
-  }
+    loggedIn: false,
+  };
 
   render() {
     return (
@@ -20,9 +20,9 @@ class App extends Component {
         </ul>
         <Router>
           <Switch>
-            <Route path='/login' component={Login}/>
-            <Route path='/home/:id' component={Home}/>
-            <Route path='/adduser' component={AddUser}/>
+            <Route path="/login" component={Login} />
+            <Route path="/home/:id" component={Home} />
+            <Route path="/adduser" component={AddUser} />
           </Switch>
         </Router>
       </div>
