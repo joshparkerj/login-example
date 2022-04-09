@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './views/Home';
 import Login from './views/Login';
@@ -16,9 +16,10 @@ const App = function App() {
       </ul>
       <Router>
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/home/:id" component={Home} />
-          <Route path="/adduser" component={AddUser} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home/:id" element={<Home />} />
+          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/" element={<h2>WELCOME TRAVELER, TO THE LOGIN EXAMPLE!</h2>} />
         </Switch>
       </Router>
     </div>

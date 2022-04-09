@@ -20,7 +20,7 @@ module.exports = {
   moduleNameMapper: {
     '\\.css$': 'identity-obj-proxy',
   },
-  coverageReporter: [
+  coverageReporters: [
     'cobertura',
   ]
 };

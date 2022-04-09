@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
+import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -7,13 +8,14 @@ import './login.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { authenticateUser } from '../data/api';
 
-const Login = function Login({ history }) {
+const Login = function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleClick = () => {
     authenticateUser(email, password)
-      .then((userId) => history.push(`/home/${userId}`))
+      .then((userId) => navigate(`/home/${userId}`))
       .catch((err) => {
         toast.error(`not authenticated: ${err}`);
       });
@@ -38,12 +40,6 @@ const Login = function Login({ history }) {
       <button type="submit" className="login-submit" onClick={handleClick}>Sign In</button>
     </div>
   );
-};
-
-Login.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
 };
 
 export default Login;

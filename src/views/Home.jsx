@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-
+import { useMatch } from 'react-router-dom';
 import debug from 'debug';
 
 import './home.css';
@@ -9,10 +8,11 @@ import { findById } from '../data/api';
 
 const debugHome = debug('home');
 
-const Home = function Home({ match }) {
+const Home = function Home() {
   const [id, setId] = useState('');
   const [user, setUser] = useState({});
   const [showUser, setShowUser] = useState({});
+  const match = useMatch();
 
   useEffect(() => {
     findById(match.params.id)
@@ -62,14 +62,6 @@ const Home = function Home({ match }) {
       <User user={showUser} />
     </div>
   );
-};
-
-Home.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
 };
 
 export default Home;
