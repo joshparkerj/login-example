@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "npx eslint \"be/*.js\" \"src/**/*.jsx\" \"src/data/*.js\""
   },
   "devDependencies": {
